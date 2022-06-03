@@ -4,9 +4,14 @@ function Header() {
     <div class="nav">
       <div class="home">Home</div>
       <div class="search">
-        <input type="text" placeholder="search" name="search" className="search-input"></input>
+        <input
+          type="text"
+          placeholder="search"
+          name="search"
+          className="search-input"
+        ></input>
         <div id="icon">
-          <AiOutlineSearch></AiOutlineSearch>
+          <AiOutlineSearch />
         </div>
       </div>
     </div>
