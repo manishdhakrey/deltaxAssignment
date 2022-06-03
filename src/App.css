@@ -1,8 +1,113 @@
-.App {
-  text-align: center;
+
+.nav{
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  background-color: grey;
+}
+.home{
+  padding-left: 20px;
+  padding-top: 5px;
+  font-size: xx-large;
+
+}
+.search{
+  padding-top: 15px;
+  padding-right: 20px;
+  border-radius: 15px;
+}
+#s{
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  background-color: white;
+  border-bottom: 2px solid gray;
+}
+#s1{
+  padding-left: 20px;
+  padding-top: 5px;
+  font-size: x-large;
+  
+}
+#art{
+  padding-left: 20px;
+  padding-top: 5rem;
+  font-size: x-large;
+  border-bottom: 2px solid gray;
+}
+#s2{
+  background-color: rgb(89, 97, 89);
+  padding-top: 10px;
+  padding-right: 20px;
+  margin-right: 20px;
+  border-radius: 5px;
+  height: 20px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  font-size: large;
+  color: white;
+
+}
+#a{
+  text-decoration: none;
+  color: white;
+}
+.topsongs{
+  border-bottom: 2px solid gray;
+}
+#songsname{
+  display: flex;
+  height: 80px;
+  justify-content: space-around;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.divimg{
+  width:5px;
 }
+.img12{
+  width: 80px;
+  height: 80px;
+}
+#song-control{
+  padding-top: 30px;
+}
+.starstyle{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 30px;
+}
+#artistinfo{
+  display: flex;
+  justify-content: space-around;
+  line-height: 80px;
+  border-bottom: 2px solid gray;
+}
+/* Add New Song CSS */
+.name{
+  padding : 12px;
+  width: 200px;
+   }
+ 
+   .input-div{
+     padding: 10px;   
+     width: 40%;
+     display: flex;
+     flex-direction: column;
+   }
+ 
+   .input{
+      padding:8px;
+      
+   }
+ 
+   .form-control{
+     width: 50%;
+     border: 2px solid black;
+     justify-content: center;
+   }
+ 
+   .input-controls{
+     display: flex;
+     flex-direction: row;
+   }  
