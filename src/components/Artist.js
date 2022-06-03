@@ -1,13 +1,13 @@
 function Artist(props){
     return(
         <div id="artistinfo">
-            <div>
+            <div id="ai">
                 {props.name}  
             </div>
-            <div>
+            <div id="ai">
                 {props.dob}  
             </div>
-            <div>
+            <div id="ai">
                 {props.songslist}  
             </div>
         </div>

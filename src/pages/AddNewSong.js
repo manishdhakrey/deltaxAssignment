@@ -1,14 +1,20 @@
-
-import { useState } from "react";
-import Multiselect from 'multiselect-react-dropdown';
+import { useState, memo } from "react";
+import Multiselect from "multiselect-react-dropdown";
+import Popup from "../components/Popup";
 function AddNewSong() {
-  const[artist,setArtist] = useState([
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openPop = (e) => {
+    e.preventDefault();
+    setIsOpen(!isOpen);
+  };
+  const [artist, setArtist] = useState([
     "Arijit Singh",
     "Alka Yagnik",
     "Udit Narayan",
     "Jubin Nautiyal",
     "Pawandeep Rajan",
-  ])
+  ]);
   return (
     <form className="form-control">
       <h1 style={{ marginLeft: "10px" }}>Adding a new Song</h1>
@@ -29,17 +35,53 @@ function AddNewSong() {
           <div className="input">
             <input type="file"></input>
           </div>
-          <div className="input">
+          <div className="input" id="add-artist">
             <Multiselect
               isObject={false}
-              onRemove={(event)=>{console.log(event)}}
-              onSelect={(event)=>{console.log(event)}}
+              // onRemove={(event)=>{console.log(event)}}
+              // onSelect={(event)=>{console.log(event)}}
               options={artist}
               showCheckbox
             />
-            
-            <button> + Add Artist</button>
+            <button onClick={openPop} className="add-art-button">
+              {" "}
+              + Add Artist
+            </button>
           </div>
+          {isOpen && (
+            <Popup
+              content={
+                <>
+                  <form class="popup-form-control">
+                    <h1 style={{ marginLeft: "10px" }}>Add Artist</h1>
+                    <div className="input-controls">
+                      <div className="input-names">
+                        <div className="name">Artist Name</div>
+                        <div className="name">Date of Birth</div>
+                        <div className="name">Bio</div>
+                      </div>
+                      <div className="input-div">
+                        <div className="input">
+                          <input type="text"></input>
+                        </div>
+                        <div className="input">
+                          <input type="date"></input>
+                        </div>
+                        <div className="input">
+                          <textarea></textarea>
+                        </div>
+                        <div className="input">
+                          <button onClick={openPop}>Cancel</button>
+                          <button>Done</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </>
+              }
+              handleClose={openPop}
+            />
+          )}
           <div className="input">
             <button>Save</button>
             <button>Cancel</button>
@@ -49,4 +91,4 @@ function AddNewSong() {
     </form>
   );
 }
-export default AddNewSong;
+export default memo(AddNewSong);
