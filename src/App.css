@@ -179,6 +179,8 @@
      
    }
    .cancel-btn{
+     
+     padding:0 4px ;
      border:1px solid #767676;
      border-radius: 2px;
      margin-left: 3px;
