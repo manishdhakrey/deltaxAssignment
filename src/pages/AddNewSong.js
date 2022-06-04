@@ -1,6 +1,7 @@
 import { useState, memo } from "react";
 import Multiselect from "multiselect-react-dropdown";
 import Popup from "../components/Popup";
+import { Link } from "react-router-dom";
 function AddNewSong() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -82,9 +83,11 @@ function AddNewSong() {
               handleClose={openPop}
             />
           )}
-          <div className="input">
-            <button>Save</button>
-            <button>Cancel</button>
+          <div className="input-btn">
+            <button type="submit">Save</button>
+            <div className="cancel-btn">
+              <Link to="/" id="cancel-btn-color">Cancel</Link>
+            </div>
           </div>
         </div>
       </div>
