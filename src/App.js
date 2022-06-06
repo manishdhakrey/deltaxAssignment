@@ -13,6 +13,7 @@ import SubHeading1 from "./components/SubHeading1";
 import SubHeading2 from "./components/SubHeading2";
 
 import { Route, Switch } from "react-router-dom";
+import Popup from "./components/Popup";
 
 function App() {
   return (
@@ -74,8 +75,11 @@ function App() {
       </Route>
       <Route exact path="/AddNewSong">
         <AddNewSong />
-        {/* <AddArtist></AddArtist> */}
+        
       </Route>
+      {/* <Route exact path="/Addartist">
+      
+      </Route> */}
     </Switch>
   );
 }

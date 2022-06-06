@@ -5,7 +5,7 @@ function Songs() {
       <div id="s">
         <div id="s1">Top 10 Songs</div>
         <Link id="s3" to="/AddNewSong">
-          <div id="s2">+ Add Song</div>
+          <div id="s2">+Add Song</div>
         </Link>
       </div>
       <div></div>
