@@ -16,19 +16,14 @@ function AddNewSong() {
     "Jubin Nautiyal",
     "Pawandeep Rajan",
   ]);
-  const [data, setData] = useState({ date: "", artistname: "" });
-  const [touched, setTouched] = useState({ artistname: false, date: false });
-  // const [error, setError] = useState({ artistName: "", date: "" });
+  const [data, setData] = useState({ date: "", artistname: "" ,bio: ""});
+  const [touched, setTouched] = useState({ artistname: false, date: false,bio:false });
+
   const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (event) => {
     const changedInput = event.target.name;
     setData({ ...data, [changedInput]: event.target.value });
-    // if (touched.artistname) {
-    //   if (!data.artistname) {
-    //     setError({ ...error, artistName: "Song is required" });
-    //   }
-    // }
   };
   const handleBlur = (event) => {
     const blurredInput = event.target.name;
@@ -36,17 +31,23 @@ function AddNewSong() {
   };
   let artistnameError = "";
   let dateBirthError = "";
+  let bioError="";
 
   if (!data.artistname) {
-    artistnameError = "Song is required";
+    artistnameError = "*Artist Name  is required";
   } else if (data.artistname.length < 2) {
-    artistnameError = "please enter full song name";
+    artistnameError = "*please enter full artist name";
   } else {
     artistnameError = "";
   }
+  
   if (!data.date) {
-    dateBirthError = "date is Required";
+    dateBirthError = "*date of birth is Required";
   } else dateBirthError = "";
+  if (!data.bio) {
+    bioError = "*Bio is Required";
+   } 
+  // else bioError = "";
 
   return (
     <>
@@ -59,7 +60,7 @@ function AddNewSong() {
                 class="popup-form-control"
                 onSubmit={(event) => {
                   event.preventDefault();
-                  console.log("rge");
+                  console.log(data);
                 }}
               >
                 <h1 style={{ marginLeft: "10px" }}>Add Artist</h1>
@@ -77,6 +78,7 @@ function AddNewSong() {
                         onBlur={handleBlur}
                         type="text"
                         value={data.artistname}
+                        autoComplete="off"
                       />
                       {touched.artistname && (
                         <div className="input errorMessage">
@@ -86,10 +88,32 @@ function AddNewSong() {
                       {/* </input> */}
                     </div>
                     <div className="input">
-                      <input type="date" name="date" />
+                      <input
+                        type="date"
+                        name="date"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={data.date}
+                        autoComplete="off"
+                      />
+                      {touched.date && (
+                        <div className="input errorMessage">
+                          {dateBirthError}
+                        </div>
+                      )}
                     </div>
                     <div className="input">
-                      <textarea></textarea>
+                      <textarea 
+                      tupe="bio"
+                      name="bio"
+                      value={data.bio}
+                      onChange={handleChange}
+                      onBlur={handleBlur}></textarea>
+                      {touched.bio && (
+                        <div className="input errorMessage">
+                          {bioError}
+                        </div>
+                      )}
                     </div>
                     <div className="input">
                       <button type="submit">Done</button>
