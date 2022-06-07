@@ -16,8 +16,24 @@ function AddNewSong() {
     "Jubin Nautiyal",
     "Pawandeep Rajan",
   ]);
-  const [data, setData] = useState({ date: "", artistname: "" ,bio: ""});
-  const [touched, setTouched] = useState({ artistname: false, date: false,bio:false });
+  const [data, setData] = useState({
+    date: "",
+    artistname: "",
+    bio: "",
+    songname: "",
+    datereleased: "",
+    artwork: "",
+    artists: "",
+  });
+  const [touched, setTouched] = useState({
+    artistname: false,
+    date: false,
+    bio: false,
+    songname: false,
+    datereleased: false,
+    artwork: false,
+    artists: false,
+  });
 
   const [submitting, setSubmitting] = useState(false);
 
@@ -31,7 +47,11 @@ function AddNewSong() {
   };
   let artistnameError = "";
   let dateBirthError = "";
-  let bioError="";
+  let bioError = "";
+  let songError = "";
+  let dateReleasedError = "";
+  let artworkError = "";
+  let artistsError = "";
 
   if (!data.artistname) {
     artistnameError = "*Artist Name  is required";
@@ -40,14 +60,35 @@ function AddNewSong() {
   } else {
     artistnameError = "";
   }
-  
+
   if (!data.date) {
     dateBirthError = "*date of birth is Required";
   } else dateBirthError = "";
   if (!data.bio) {
     bioError = "*Bio is Required";
-   } 
-  // else bioError = "";
+  }
+  if (!data.songname) {
+    songError = "*Song Name  is required";
+  } else if (data.songname.length < 2) {
+    songError = "*please enter full song name";
+  } else {
+    songError = "";
+  }
+  if (!data.datereleased) {
+    dateReleasedError = "*Date  is required";
+  } else {
+    dateReleasedError = "";
+  }
+  if (!data.artwork) {
+    artworkError = "*file  is required";
+  } else {
+    artworkError = "";
+  }
+  if (!data.artists) {
+    artistsError = "*Artist  is required";
+  } else {
+    artistsError = "";
+  }
 
   return (
     <>
@@ -103,16 +144,15 @@ function AddNewSong() {
                       )}
                     </div>
                     <div className="input">
-                      <textarea 
-                      tupe="bio"
-                      name="bio"
-                      value={data.bio}
-                      onChange={handleChange}
-                      onBlur={handleBlur}></textarea>
+                      <textarea
+                        type="text"
+                        name="bio"
+                        value={data.bio}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      ></textarea>
                       {touched.bio && (
-                        <div className="input errorMessage">
-                          {bioError}
-                        </div>
+                        <div className="input errorMessage">{bioError}</div>
                       )}
                     </div>
                     <div className="input">
@@ -129,10 +169,14 @@ function AddNewSong() {
       )}
       <form
         className="form-control"
+        // onSubmit={(event) => {
+        //   // console.log("rge");
+        //   event.preventDefault();
+        //   setSubmitting(true);
+        // }}
         onSubmit={(event) => {
-          // console.log("rge");
           event.preventDefault();
-          setSubmitting(true);
+          console.log(data);
         }}
       >
         <h1 style={{ marginLeft: "10px" }}>Adding a new Song</h1>
@@ -145,22 +189,58 @@ function AddNewSong() {
           </div>
           <div className="input-div">
             <div className="input">
-              <input type="text"></input>
+              <input
+                type="text"
+                name="songname"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={data.songname}
+              />
+              {touched.songname && (
+                <div className="input errorMessage">{songError}</div>
+              )}
             </div>
             <div className="input">
-              <input type="text"></input>
+              <input
+                type="date"
+                name="datereleased"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={data.datereleased}
+              />
+              {touched.datereleased && (
+                <div className="input errorMessage">{dateReleasedError}</div>
+              )}
             </div>
             <div className="input">
-              <input type="file"></input>
+              <input
+                type="file"
+                name="artwork"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={data.artwork}
+              />
+              {touched.artwork && (
+                <div className="input errorMessage">{artworkError}</div>
+              )}
             </div>
             <div className="input" id="add-artist">
               <Multiselect
                 isObject={false}
-                // onRemove={(event)=>{console.log(event)}}
-                // onSelect={(event)=>{console.log(event)}}
+                onRemove={(event)=>{console.log(event)}}
+                onSelect={(event)=>{console.log(event)}}
                 options={artist}
                 showCheckbox
+                // displayValue="name"
+                 name="artists"
+                // onSelect={handleChange}
+                // onBlur={handleBlur}
+                // value={data.artists}
               />
+              {touched.artists && (
+                <div className="input errorMessage">{artistsError}</div>
+              )}
+
               <button onClick={openPop} className="add-art-button">
                 {" "}
                 + Add Artist
