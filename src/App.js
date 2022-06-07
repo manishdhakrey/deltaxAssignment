@@ -73,7 +73,7 @@ function App() {
           />
         </div>
       </Route>
-      <Route exact path="/AddNewSong">
+      <Route exact path="/AddNewSong">  
         <AddNewSong />
         
       </Route>
